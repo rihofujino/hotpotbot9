@@ -30,6 +30,7 @@ func main() {
 
 	r := mux.NewRouter()
 	//r.HandleFunc("/")
+	fmt.Println("来た")
 	r.HandleFunc("/webhook", mainhandler).Methods("POST")
 
 	if err := http.ListenAndServe(":"+port, nil); err != nil {
