@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -10,6 +11,7 @@ import (
 )
 
 func main() {
+	fmt.Println("server start ...")
 	port := os.Getenv("PORT")
 
 	if port == "" {
