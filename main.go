@@ -13,6 +13,7 @@ import (
 func main() {
 	fmt.Println("server start ...")
 	port := os.Getenv("PORT")
+	fmt.Println(port)
 
 	if port == "" {
 		log.Fatal("$PORT must be set")
