@@ -67,7 +67,7 @@ func mainhandler(w http.ResponseWriter, r *http.Request) {
 		os.Getenv("CHANNEL_TOKEN"),
 	)
 	if err != nil {
-		log.Fatal(err)
+		log.Print(err)
 	}
 	events, err := bot.ParseRequest(r)
 	if err != nil {
