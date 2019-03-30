@@ -67,6 +67,7 @@ func main() {
 }
 
 func mainhandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("来た")
 	bot, err := linebot.New(
 		os.Getenv("CHANNEL_SECRET"),
 		os.Getenv("CHANNEL_TOKEN"),
