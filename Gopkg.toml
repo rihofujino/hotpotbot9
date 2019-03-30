@@ -5,6 +5,11 @@
 #
 # required = ["github.com/user/thing/cmd/thing"]
 # ignored = ["github.com/user/project/pkgX", "bitbucket.org/user/project/pkgA/pkgY"]
+
+#[[metadata.heroku]]
+# root-package = "github.com/heroku/gyozabot"
+# go-version = "1.11.2"
+# ensure="true"
 #
 # [[constraint]]
 #   name = "github.com/user/project"
@@ -36,3 +41,5 @@
 [prune]
   go-tests = true
   unused-packages = true
+
+
