@@ -26,7 +26,7 @@ func main() {
 	ChannelSecret := os.Getenv("CHANNEL_SECRET")
 	ChannelAccessToken := os.Getenv("CHANNEL_TOKEN")
 
-	router.POST("/hook", func(c *gin.Context) {
+	router.POST("/webhook", func(c *gin.Context) {
 		client := &http.Client{Timeout: time.Duration(15 * time.Second)}
 		bot, err := linebot.New(ChannelSecret, ChannelAccessToken, linebot.WithHTTPClient(client))
 		if err != nil {
