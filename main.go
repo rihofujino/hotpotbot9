@@ -27,16 +27,20 @@ func main() {
 	ChannelAccessToken := os.Getenv("CHANNEL_TOKEN")
 
 	router.POST("/webhook", func(c *gin.Context) {
-		fmt.Println("来た")
 		client := &http.Client{Timeout: time.Duration(15 * time.Second)}
+		fmt.Println(client)
+
 		bot, err := linebot.New(ChannelSecret, ChannelAccessToken, linebot.WithHTTPClient(client))
 		if err != nil {
 			fmt.Println(err)
 			return
 		}
+		fmt.Println(bot)
 		received, err := bot.ParseRequest(c.Request)
+		fmt.Println(received)
 
 		for _, event := range received {
+			fmt.Println(event)
 			if event.Type == linebot.EventTypeMessage {
 				switch message := event.Message.(type) {
 				case *linebot.TextMessage:
