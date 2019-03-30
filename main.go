@@ -28,6 +28,9 @@ func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/webhook", mainhandler)
 
+	if err := http.ListenAndServe(":"+port, nil); err != nil {
+		log.Print(err)
+	}
 	// router := gin.New()
 	// router.Use(gin.Logger())
 	// router.LoadHTMLGlob("templates/*.tmpl.html")
