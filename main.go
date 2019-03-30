@@ -23,7 +23,9 @@ func main() {
 	// r.HandleFunc("/webhook", mainhandler).Methods("POST")
 
 	mux := http.NewServeMux()
+	fmt.Println(mux)
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Println("来た")
 		fmt.Fprintf(w, "Welcome to the home page!")
 	})
 
