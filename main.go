@@ -29,8 +29,7 @@ func main() {
 	// }
 
 	r := mux.NewRouter()
-	//r.HandleFunc("/")
-	fmt.Println("来た")
+	r.HandleFunc("/", testpage)
 	r.HandleFunc("/webhook", mainhandler).Methods("POST")
 
 	if err := http.ListenAndServe(":"+port, nil); err != nil {
@@ -67,6 +66,11 @@ func main() {
 	// })
 
 	// router.Run(":" + port)
+}
+
+//MainPage ...
+func testpage(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("hi"))
 }
 
 func mainhandler(w http.ResponseWriter, r *http.Request) {
