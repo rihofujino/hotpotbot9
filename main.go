@@ -35,16 +35,16 @@ func main() {
 			fmt.Println(err)
 			return
 		}
-		fmt.Println(bot) //&{6aa37b7773a27d966174457ccb5c284e ix44e08i7lia3MIrspbXvrrSHfTxlpPMgSAoyggevENTdxnatN0RSgowwsk/KZgtBSCpoB9osesTOo30NuzFxxgnIWCmUCtYrCU8AhARnMfx38MumaPD1RnfzvCKYyxhhLCaMF58vIlEJhzKYq7piQdB04t89/1O/w1cDnyilFU= 0xc0001f6300 0xc0001b6e40}
+		fmt.Println(*bot) //&{6aa37b7773a27d966174457ccb5c284e ix44e08i7lia3MIrspbXvrrSHfTxlpPMgSAoyggevENTdxnatN0RSgowwsk/KZgtBSCpoB9osesTOo30NuzFxxgnIWCmUCtYrCU8AhARnMfx38MumaPD1RnfzvCKYyxhhLCaMF58vIlEJhzKYq7piQdB04t89/1O/w1cDnyilFU= 0xc0001f6300 0xc0001b6e40}
 		received, err := bot.ParseRequest(c.Request)
-		fmt.Println(received) //[0xc0001e65a0]
 
 		for _, event := range received {
-			fmt.Println(event) //&{9f5422904b2d4b70ac3a7305ed334b42 message 2019-03-30 12:55:39.218 +0000 UTC 0xc0001bc600 0xc0001b7110 <nil> <nil> <nil> <nil> <nil> <nil> []}
+			fmt.Println(*event) //&{9f5422904b2d4b70ac3a7305ed334b42 message 2019-03-30 12:55:39.218 +0000 UTC 0xc0001bc600 0xc0001b7110 <nil> <nil> <nil> <nil> <nil> <nil> []}
 			if event.Type == linebot.EventTypeMessage {
 				switch message := event.Message.(type) {
 				case *linebot.TextMessage:
 					source := event.Source
+					fmt.Println(source)
 					if source.Type == linebot.EventSourceTypeRoom {
 						if resMessage := getResMessage(message.Text); resMessage != "" {
 							postMessage := linebot.NewTextMessage(resMessage)
@@ -71,6 +71,7 @@ func getResMessage(reqMessage string) (message string) {
 		} else {
 			message = reqMessage + "じゃねーよw"
 		}
+		fmt.Println(message)
 	}
 	return
 }
