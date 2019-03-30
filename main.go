@@ -28,19 +28,19 @@ func main() {
 
 	router.POST("/webhook", func(c *gin.Context) {
 		client := &http.Client{Timeout: time.Duration(15 * time.Second)}
-		fmt.Println(client)
+		fmt.Println(client) //&{<nil> <nil> <nil> 15s}
 
 		bot, err := linebot.New(ChannelSecret, ChannelAccessToken, linebot.WithHTTPClient(client))
 		if err != nil {
 			fmt.Println(err)
 			return
 		}
-		fmt.Println(bot)
+		fmt.Println(bot) //&{6aa37b7773a27d966174457ccb5c284e ix44e08i7lia3MIrspbXvrrSHfTxlpPMgSAoyggevENTdxnatN0RSgowwsk/KZgtBSCpoB9osesTOo30NuzFxxgnIWCmUCtYrCU8AhARnMfx38MumaPD1RnfzvCKYyxhhLCaMF58vIlEJhzKYq7piQdB04t89/1O/w1cDnyilFU= 0xc0001f6300 0xc0001b6e40}
 		received, err := bot.ParseRequest(c.Request)
-		fmt.Println(received)
+		fmt.Println(received) //[0xc0001e65a0]
 
 		for _, event := range received {
-			fmt.Println(event)
+			fmt.Println(event) //&{9f5422904b2d4b70ac3a7305ed334b42 message 2019-03-30 12:55:39.218 +0000 UTC 0xc0001bc600 0xc0001b7110 <nil> <nil> <nil> <nil> <nil> <nil> []}
 			if event.Type == linebot.EventTypeMessage {
 				switch message := event.Message.(type) {
 				case *linebot.TextMessage:
