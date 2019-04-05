@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -19,12 +20,14 @@ func main() {
 	}
 
 	data, err := ioutil.ReadFile("replymessage.json")
+	fmt.Println("来た")
+	fmt.Println(data)
 	if err != nil {
-		log.Print(err)
+		log.Fatal(err)
 	}
 	container, err := linebot.UnmarshalFlexMessageJSON(data)
 	if err != nil {
-		log.Print(err)
+		log.Fatal(err)
 	}
 	// container := &linebot.BubbleContainer{
 	// 	Type: linebot.FlexContainerTypeBubble,
