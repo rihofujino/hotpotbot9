@@ -1,10 +1,12 @@
 package main
 
 import (
+	"html/template"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/line/line-bot-sdk-go/linebot"
 )
@@ -14,15 +16,6 @@ func main() {
 		os.Getenv("CHANNEL_SECRET"),
 		os.Getenv("CHANNEL_TOKEN"),
 	)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	data, err := ioutil.ReadFile("./replymessage.json")
-	if err != nil {
-		log.Fatal(err)
-	}
-	container, err := linebot.UnmarshalFlexMessageJSON(data)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -38,6 +31,16 @@ func main() {
 			}
 			return
 		}
+
+		data, err := ioutil.ReadFile("./replymessage.json")
+		if err != nil {
+			log.Fatal(err)
+		}
+		container, err := linebot.UnmarshalFlexMessageJSON(data)
+		if err != nil {
+			log.Fatal(err)
+		}
+
 		for _, event := range events {
 			if event.Type == linebot.EventTypeMessage {
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewFlexMessage("エンジニア寄せ鍋", container)).Do(); err != nil {
@@ -46,6 +49,16 @@ func main() {
 			}
 		}
 	})
+
+	http.HandleFunc("/home", func(w http.ResponseWriter, req *http.Request) {
+		// テンプレートをパース
+		t := template.Must(template.ParseFiles("./personal_information.html"))
+		// テンプレートを描画
+		if err := t.ExecuteTemplate(w, "personal_information.html", time.Now()); err != nil {
+			log.Fatal(err)
+		}
+	})
+
 	// This is just sample code.
 	// For actual use, you must support HTTPS by using `ListenAndServeTLS`, a reverse proxy or something else.
 	if err := http.ListenAndServe(":"+os.Getenv("PORT"), nil); err != nil {
