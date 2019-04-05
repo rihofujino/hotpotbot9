@@ -17,6 +17,24 @@ func main() {
 		log.Fatal(err)
 	}
 
+	container := &linebot.BubbleContainer{
+		Type: linebot.FlexContainerTypeBubble,
+		Body: &linebot.BoxComponent{
+			Type:   linebot.FlexComponentTypeBox,
+			Layout: linebot.FlexBoxLayoutTypeHorizontal,
+			Contents: []linebot.FlexComponent{
+				&linebot.TextComponent{
+					Type: linebot.FlexComponentTypeText,
+					Text: "Hello,",
+				},
+				&linebot.TextComponent{
+					Type: linebot.FlexComponentTypeText,
+					Text: "World!",
+				},
+			},
+		},
+	}
+
 	// Setup HTTP Server for receiving requests from LINE platform
 	http.HandleFunc("/webhook", func(w http.ResponseWriter, req *http.Request) {
 		events, err := bot.ParseRequest(req)
@@ -30,11 +48,8 @@ func main() {
 		}
 		for _, event := range events {
 			if event.Type == linebot.EventTypeMessage {
-				switch message := event.Message.(type) {
-				case *linebot.TextMessage:
-					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.Text)).Do(); err != nil {
-						log.Print(err)
-					}
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewFlexMessage("alt text", container)).Do(); err != nil {
+					log.Print(err)
 				}
 			}
 		}
@@ -45,3 +60,30 @@ func main() {
 		log.Fatal(err)
 	}
 }
+
+// func reply(replyToken string) error {
+// 	container := &linebot.BubbleContainer{
+// 		Type: linebot.FlexContainerTypeBubble,
+// 		Body: &linebot.BoxComponent{
+// 			Type:   linebot.FlexComponentTypeBox,
+// 			Layout: linebot.FlexBoxLayoutTypeHorizontal,
+// 			Contents: []linebot.FlexComponent{
+// 				&linebot.TextComponent{
+// 					Type: linebot.FlexComponentTypeText,
+// 					Text: "Hello,",
+// 				},
+// 				&linebot.TextComponent{
+// 					Type: linebot.FlexComponentTypeText,
+// 					Text: "World!",
+// 				},
+// 			},
+// 		},
+// 	}
+// 	if _, err := client.ReplyMessage(
+// 		replyToken,
+// 		linebot.NewFlexMessage("alt text", container),
+// 	).Do(); err != nil {
+// 		return err
+// 	}
+// 	return nil
+// }
