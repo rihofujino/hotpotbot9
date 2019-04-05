@@ -23,11 +23,6 @@
       },
       {
         "type": "box",
-        "layout": "baseline",
-        "margin": "md"
-      },
-      {
-        "type": "box",
         "layout": "vertical",
         "margin": "lg",
         "spacing": "sm",
