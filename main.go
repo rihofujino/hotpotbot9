@@ -39,7 +39,7 @@ func main() {
 			return
 		}
 		for _, event := range events {
-			if event.Type == linebot.EventTypeMessage {
+			if event.Type == linebot.EventTypeFollow {
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewFlexMessage("alt text", container)).Do(); err != nil {
 					log.Print(err)
 				}

@@ -81,7 +81,7 @@
               },
               {
                 "type": "text",
-                "text": "Miraina Tower, 4-1-6 Shinjuku, Tokyo",
+                "text": "〒104-0061 東京都中央区銀座2-15-2 東急銀座二丁目ビル 地下1F研修ルーム",
                 "wrap": true,
                 "color": "#666666",
                 "size": "sm",
@@ -103,7 +103,7 @@
               },
               {
                 "type": "text",
-                "text": "10:00 - 23:00",
+                "text": "18:30 - 20:10",
                 "wrap": true,
                 "color": "#666666",
                 "size": "sm",
