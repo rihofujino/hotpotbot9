@@ -1,0 +1,191 @@
+[
+    {
+          "type": "flex",
+          "altText": "Flex Message",
+          "contents": {
+            "type": "bubble",
+            "header": {
+              "type": "box",
+              "layout": "horizontal",
+              "flex": 10,
+              "spacing": "xxl",
+              "margin": "xxl",
+              "contents": [
+                {
+                  "type": "image",
+                  "url": "https://line-young.herokuapp.com/img/header.png",
+                  "gravity": "center"
+                },
+                {
+                  "type": "text",
+                  "text": "LINE",
+                  "margin": "lg",
+                  "size": "xxl",
+                  "align": "center",
+                  "gravity": "center",
+                  "weight": "bold",
+                  "color": "#2E7D32",
+                  "wrap": false
+                },
+                {
+                  "type": "text",
+                  "text": "Partner Seminar ChatBot",
+                  "margin": "xxl",
+                  "size": "xs",
+                  "align": "start",
+                  "gravity": "center",
+                  "color": "#1B5E20",
+                  "wrap": true
+                }
+              ]
+            },
+            "hero": {
+              "type": "image",
+              "url": "https://line-young.herokuapp.com/img/hero_.png",
+              "margin": "none",
+              "align": "center",
+              "gravity": "top",
+              "size": "full",
+              "aspectRatio": "4:3",
+              "aspectMode": "fit",
+              "action": {
+                "type": "uri",
+                "label": "ActionToLine",
+                "uri": "https://linecorp.com/"
+              }
+            },
+            "body": {
+              "type": "box",
+              "layout": "horizontal",
+              "spacing": "md",
+              "contents": [
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "flex": 1,
+                  "contents": [
+                    {
+                      "type": "image",
+                      "url": "https://line-young.herokuapp.com/img/body.gif",
+                      "align": "start",
+                      "gravity": "center",
+                      "size": "full",
+                      "aspectRatio": "9:16",
+                      "aspectMode": "fit"
+                    }
+                  ]
+                },
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "flex": 2,
+                  "contents": [
+                    {
+                      "type": "separator",
+                      "margin": "md",
+                      "color": "#2E7D32"
+                    },
+                    {
+                      "type": "text",
+                      "text": "参加者情報登録",
+                      "flex": 2,
+                      "margin": "md",
+                      "size": "md",
+                      "align": "start",
+                      "gravity": "center",
+                      "weight": "regular",
+                      "color": "#43A047",
+                      "action": {
+                        "type": "uri",
+                        "label": "Personal Information",
+                        "uri": "line://app/1588275184-r5pg4k5X"
+                      }
+                    },
+                    {
+                      "type": "separator",
+                      "margin": "md",
+                      "color": "#2E7D32"
+                    },
+                    {
+                      "type": "text",
+                      "text": "セミナー情報・質問投稿",
+                      "flex": 2,
+                      "margin": "md",
+                      "size": "md",
+                      "align": "start",
+                      "gravity": "center",
+                      "weight": "regular",
+                      "color": "#43A047",
+                      "action": {
+                            "type": "uri",
+                            "label": "Sminar Information",
+                            "uri": "line://app/1588275184-P5vVgL1m"
+                          }
+                    },
+                    {
+                      "type": "separator",
+                      "margin": "md",
+                      "color": "#2E7D32"
+                    },
+                    {
+                      "type": "text",
+                      "text": "ChatBot情報",
+                      "flex": 2,
+                      "margin": "md",
+                      "size": "md",
+                      "align": "start",
+                      "gravity": "center",
+                      "weight": "regular",
+                      "color": "#43A047",
+                      "action": {
+                            "type": "uri",
+                            "label": "Source Information",
+                            "uri": "line://app/1588275184-Pj9Z8Lbm"
+                          }
+                    },
+                    {
+                      "type": "separator",
+                      "margin": "md",
+                      "color": "#2E7D32"
+                    }
+                  ]
+                }
+              ]
+            },
+            "footer": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "button",
+                  "action": {
+                    "type": "uri",
+                    "label": "アンケートはこちら",
+                    "uri": "line://app/1588275184-pjaV2vAo"
+                  }
+                }
+              ]
+            },
+            "styles": {
+              "header": {
+                "backgroundColor": "#FFFFFF"
+              },
+              "hero": {
+                "backgroundColor": "#FFFFFF",
+                "separator": false,
+                "separatorColor": "#000000"
+              },
+              "body": {
+                "backgroundColor": "#FFFFFF",
+                "separator": false,
+                "separatorColor": "#000000"
+              },
+              "footer": {
+                "backgroundColor": "#FFFFFF",
+                "separator": false,
+                "separatorColor": "#000000"
+              }
+            }
+          }
+        }
+];

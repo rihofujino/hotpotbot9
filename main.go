@@ -1,6 +1,7 @@
 package main
 
 import (
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -17,23 +18,31 @@ func main() {
 		log.Fatal(err)
 	}
 
-	container := &linebot.BubbleContainer{
-		Type: linebot.FlexContainerTypeBubble,
-		Body: &linebot.BoxComponent{
-			Type:   linebot.FlexComponentTypeBox,
-			Layout: linebot.FlexBoxLayoutTypeVertical,
-			Contents: []linebot.FlexComponent{
-				&linebot.TextComponent{
-					Type: linebot.FlexComponentTypeText,
-					Text: "Hello,",
-				},
-				&linebot.TextComponent{
-					Type: linebot.FlexComponentTypeText,
-					Text: "World!",
-				},
-			},
-		},
+	data, err := ioutil.ReadFile("replymessage.json")
+	if err != nil {
+		log.Print(err)
 	}
+	container, err := linebot.UnmarshalFlexMessageJSON(data)
+	if err != nil {
+		log.Print(err)
+	}
+	// container := &linebot.BubbleContainer{
+	// 	Type: linebot.FlexContainerTypeBubble,
+	// 	Body: &linebot.BoxComponent{
+	// 		Type:   linebot.FlexComponentTypeBox,
+	// 		Layout: linebot.FlexBoxLayoutTypeHorizontal,
+	// 		Contents: []linebot.FlexComponent{
+	// 			&linebot.TextComponent{
+	// 				Type: linebot.FlexComponentTypeText,
+	// 				Text: "Hello,",
+	// 			},
+	// 			&linebot.TextComponent{
+	// 				Type: linebot.FlexComponentTypeText,
+	// 				Text: "World!",
+	// 			},
+	// 		},
+	// 	},
+	// }
 
 	// Setup HTTP Server for receiving requests from LINE platform
 	http.HandleFunc("/webhook", func(w http.ResponseWriter, req *http.Request) {
