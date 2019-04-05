@@ -28,7 +28,6 @@ func main() {
 
 	router.POST("/webhook", func(c *gin.Context) {
 		client := &http.Client{Timeout: time.Duration(15 * time.Second)}
-		fmt.Println(client) //&{<nil> <nil> <nil> 15s}
 
 		bot, err := linebot.New(ChannelSecret, ChannelAccessToken, linebot.WithHTTPClient(client))
 		if err != nil {
@@ -44,8 +43,8 @@ func main() {
 				switch message := event.Message.(type) {
 				case *linebot.TextMessage:
 					source := event.Source
-					fmt.Println(source)
-					if source.Type == linebot.EventSourceTypeRoom {
+					fmt.Println(source) //&{user U12d726bedeaf40594255d81c263c0f0f  }
+					if source.Type == linebot.EventSourceTypeUser {
 						if resMessage := getResMessage(message.Text); resMessage != "" {
 							postMessage := linebot.NewTextMessage(resMessage)
 							if _, err = bot.ReplyMessage(event.ReplyToken, postMessage).Do(); err != nil {
