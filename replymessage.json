@@ -2,7 +2,7 @@
   "type": "bubble",
   "hero": {
     "type": "image",
-    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
+    "url": "https://d2v9k5u4v94ulw.cloudfront.net/small_light(dw=1440,dh=630,da=s,ds=s,cw=1440,ch=630,cc=FFFFFF)/assets/images/1704367/original/5c52d098-bb2f-4a6e-b031-c6065d6d32b9.jpeg?1499327733",
     "size": "full",
     "aspectRatio": "20:13",
     "aspectMode": "cover",
@@ -17,7 +17,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "Brown Cafe",
+        "text": "エンジニア寄せ鍋",
         "weight": "bold",
         "size": "xl"
       },
@@ -126,18 +126,8 @@
         "height": "sm",
         "action": {
           "type": "uri",
-          "label": "CALL",
-          "uri": "https://linecorp.com"
-        }
-      },
-      {
-        "type": "button",
-        "style": "link",
-        "height": "sm",
-        "action": {
-          "type": "uri",
           "label": "WEBSITE",
-          "uri": "https://linecorp.com"
+          "uri": "https://yosenabe.connpass.com/"
         }
       },
       {
