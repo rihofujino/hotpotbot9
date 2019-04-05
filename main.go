@@ -26,23 +26,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	// container := &linebot.BubbleContainer{
-	// 	Type: linebot.FlexContainerTypeBubble,
-	// 	Body: &linebot.BoxComponent{
-	// 		Type:   linebot.FlexComponentTypeBox,
-	// 		Layout: linebot.FlexBoxLayoutTypeHorizontal,
-	// 		Contents: []linebot.FlexComponent{
-	// 			&linebot.TextComponent{
-	// 				Type: linebot.FlexComponentTypeText,
-	// 				Text: "Hello,",
-	// 			},
-	// 			&linebot.TextComponent{
-	// 				Type: linebot.FlexComponentTypeText,
-	// 				Text: "World!",
-	// 			},
-	// 		},
-	// 	},
-	// }
 
 	// Setup HTTP Server for receiving requests from LINE platform
 	http.HandleFunc("/webhook", func(w http.ResponseWriter, req *http.Request) {
