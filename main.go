@@ -19,7 +19,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	data, err := ioutil.ReadFile("replymessage.json")
+	data, err := ioutil.ReadFile("./replymessage.json")
 	fmt.Println("来た")
 	fmt.Println(data)
 	if err != nil {
