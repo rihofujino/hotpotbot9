@@ -86,7 +86,20 @@
         "height": "sm",
         "action": {
           "type": "uri",
-          "label": "WEBSITE",
+          "label": "イベント詳細",
+          "uri": "https://yosenabe.connpass.com/event/118014/"
+        }
+      },
+      {
+        "type": "separator"
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "出席登録",
           "uri": "line://app/1645446957-4ZgJ3QzA"
         }
       },
@@ -99,20 +112,7 @@
         "height": "sm",
         "action": {
           "type": "uri",
-          "label": "WEBSITE",
-          "uri": "line://app/1645446957-4ZgJ3QzA"
-        }
-      },
-      {
-        "type": "separator"
-      },
-      {
-        "type": "button",
-        "style": "link",
-        "height": "sm",
-        "action": {
-          "type": "uri",
-          "label": "WEBSITE",
+          "label": "イベント後アンケート",
           "uri": "line://app/1645446957-4ZgJ3QzA"
         }
       }
