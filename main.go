@@ -43,7 +43,7 @@ func main() {
 		}
 
 		for _, event := range events {
-			fmt.Println(event)
+			fmt.Println(event.Source)
 			if event.Type == linebot.EventTypeFollow {
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewFlexMessage("エンジニア寄せ鍋", container)).Do(); err != nil {
 					log.Print(err)
