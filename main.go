@@ -18,7 +18,10 @@ func main() {
 	r.HandleFunc("/webhook", handlers.Main)
 	r.HandleFunc("/personal-info", handlers.PersonalInfo)
 
-	log.Fatal(http.ListenAndServe(os.Getenv("PORT"), r))
+	port := os.Getenv("PORT")
+	fmt.Println(port)
+
+	log.Fatal(http.ListenAndServe(port, r))
 
 	// This is just sample code.
 	// For actual use, you must support HTTPS by using `ListenAndServeTLS`, a reverse proxy or something else.
