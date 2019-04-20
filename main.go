@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -11,6 +12,7 @@ import (
 )
 
 func main() {
+	fmt.Println("Server Start...")
 
 	r := mux.NewRouter()
 	r.HandleFunc("/webhook", handlers.Main)
