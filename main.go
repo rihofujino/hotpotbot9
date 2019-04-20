@@ -7,7 +7,6 @@ import (
 	"os"
 
 	"github.com/gorilla/mux"
-
 	"github.com/heroku/gyozabot/handlers"
 )
 
@@ -19,9 +18,11 @@ func main() {
 	r.HandleFunc("/webhook", handlers.Main)
 	r.HandleFunc("/personal-info", handlers.PersonalInfo)
 
+	log.Fatal(http.ListenAndServe(os.Getenv("PORT"), r))
+
 	// This is just sample code.
 	// For actual use, you must support HTTPS by using `ListenAndServeTLS`, a reverse proxy or something else.
-	if err := http.ListenAndServe(":"+os.Getenv("PORT"), nil); err != nil {
-		log.Fatal(err)
-	}
+	// if err := http.ListenAndServe(":"+os.Getenv("PORT"), nil); err != nil {
+	// 	log.Fatal(err)
+	// }
 }
