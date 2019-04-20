@@ -54,7 +54,7 @@ func main() {
 
 	http.HandleFunc("/personal-info", func(w http.ResponseWriter, req *http.Request) {
 		// テンプレートをパース
-		t := template.Must(template.ParseFiles("./personal_information.html"))
+		t := template.Must(template.ParseFiles("./personal_info.html"))
 		// テンプレートを描画
 		if err := t.ExecuteTemplate(w, "personal_information.html", time.Now()); err != nil {
 			log.Fatal(err)

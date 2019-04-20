@@ -10,30 +10,32 @@
     <title>参加者情報</title>
 </head>
 <body>
-		<div class="container">
-			<form>
-				<div class="form-group">
-					<label for="name">名前</label>
-					<input type="name" class="form-control" id="name" placeholder="田中　太郎">
+		<div class="container mt-5">
+			<form method="POST">
+				<div class="form-group row">
+					<label for="name" class="col-sm-1">名前</label>
+					<input type="name" class="form-control col-sm-11" id="name" placeholder="田中　太郎">
 				</div>
-				<div class="form-group">
-						<label for="company">会社名</label>
-						<input type="company" class="form-control" id="company" placeholder="（株）トライバルメディアハウス">
+				<div class="form-group row">
+						<label for="company" class="col-sm-1">会社名</label>
+						<input type="company" class="form-control col-sm-11" id="company" placeholder="（株）トライバルメディアハウス">
 					</div>
-				<div class="form-group">
-					<label for="jobType">職種</label>
-					<select class="form-control" id="jobType">
+				<div class="form-group row">
+					<label for="jobType" class="col-sm-1">職種</label>
+					<select class="form-control col-sm-11" id="jobType">
 						<option value="1">エンジニア</option>
 						<option value="2">プロダクトオーナー</option>
 						<option value="3">営業</option>
 						<option value="4">その他</option>
 					</select>
 				</div>
-				<button type="submit" class="btn btn-primary">出席</button>
+				<div class="d-flex justify-content-center">
+					<button type="submit" class="btn btn-primary">出席</button>
+				</div>
 			</form>
 	</div>
 
-	<div class="container footer">
+	<div class="container footer d-flex justify-content-end ">
 		<p>Copyright@ Tribal Media House.inc</p>
 	</div>
 
