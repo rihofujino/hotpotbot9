@@ -15,6 +15,7 @@ func main() {
 	http.HandleFunc("/webhook", handlers.Main)
 	http.HandleFunc("/personal-info", handlers.PersonalInfo)
 	http.HandleFunc("/entry", handlers.Entry)
+	http.HandleFunc("/survey", handlers.Survey)
 
 	// This is just sample code.
 	// For actual use, you must support HTTPS by using `ListenAndServeTLS`, a reverse proxy or something else.
