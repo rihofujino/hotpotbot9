@@ -52,7 +52,7 @@ func main() {
 		}
 	})
 
-	http.HandleFunc("/home", func(w http.ResponseWriter, req *http.Request) {
+	http.HandleFunc("/personal-info", func(w http.ResponseWriter, req *http.Request) {
 		// テンプレートをパース
 		t := template.Must(template.ParseFiles("./personal_information.html"))
 		// テンプレートを描画
