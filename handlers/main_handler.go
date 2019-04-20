@@ -30,7 +30,7 @@ func Main(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data, err := ioutil.ReadFile("replymessage.json")
+	data, err := ioutil.ReadFile("messages/replymessage.json")
 	if err != nil {
 		log.Fatal(err)
 	}
