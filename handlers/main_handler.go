@@ -12,6 +12,7 @@ import (
 
 // Main ...
 func Main(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("kita1")
 
 	bot, err := linebot.New(
 		os.Getenv("CHANNEL_SECRET"),
@@ -30,8 +31,9 @@ func Main(w http.ResponseWriter, r *http.Request) {
 		}
 		return
 	}
+	fmt.Println("kita2")
 
-	data, err := ioutil.ReadFile("./replymessage.json")
+	data, err := ioutil.ReadFile("/replymessage.json")
 	if err != nil {
 		log.Fatal(err)
 	}
