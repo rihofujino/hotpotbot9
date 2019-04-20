@@ -56,7 +56,7 @@ func main() {
 		// テンプレートをパース
 		t := template.Must(template.ParseFiles("./personal_info.html"))
 		// テンプレートを描画
-		if err := t.ExecuteTemplate(w, "personal_information.html", time.Now()); err != nil {
+		if err := t.ExecuteTemplate(w, "personal_info.html", time.Now()); err != nil {
 			log.Fatal(err)
 		}
 	})
