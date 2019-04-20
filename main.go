@@ -12,8 +12,6 @@ import (
 func main() {
 	fmt.Println("Server Start...")
 
-	// r := mux.NewRouter()
-	// fmt.Println("debug1")
 	http.HandleFunc("/webhook", handlers.Main)
 	http.HandleFunc("/personal-info", handlers.PersonalInfo)
 

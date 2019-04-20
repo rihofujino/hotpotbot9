@@ -33,7 +33,7 @@ func Main(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Println("kita2")
 
-	data, err := ioutil.ReadFile("/replymessage.json")
+	data, err := ioutil.ReadFile("replymessage.json")
 	if err != nil {
 		log.Fatal(err)
 	}
