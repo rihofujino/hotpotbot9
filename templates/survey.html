@@ -4,38 +4,39 @@
     <meta charset="UTF-8">
   	<meta name="description" content="TMH Engineer Hotpot">
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
     <title>イベント後アンケート</title>
 </head>
 <body>
-    <div class="container">
-        <form action="/entry" method="POST">
-            <div class="row my-3 px-3">
-                <label for="name" class="col-3">名前</label>
-                <input type="name" class="form-control col-9" id="name" name="name" placeholder="田中　太郎">
-            </div>
-            <div class="row my-3 px-3">
-                    <label for="company" class="col-3">会社名</label>
-                    <input type="company" class="form-control col-9" id="company" name="company" placeholder="（株）トライバルメディアハウス">
-                </div>
-            <div class="row my-3 px-3">
-                <label for="jobType" class="col-3">職種</label>
-                <select class="form-control col-9" id="jobType" name="jobType">
-                    <option value="1">エンジニア</option>
-                    <option value="2">プロダクトオーナー</option>
-                    <option value="3">営業</option>
-                    <option value="4">その他</option>
-                </select>
-            </div>
-            <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary">出席</button>
-            </div>
+    <div class="container mt-5">
+        <form　action="/post-survey" method="POST">
+        <div class="form-group">
+            <label for="satisfaction">イベントの満足度を教えてください。</label>
+            <select class="form-control" id="satisfaction" name="satisfaction">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="impression">イベントの感想を教えてください。</label>
+            <textarea class="form-control" id="impression" name="impression" rows="3"></textarea>
+        </div>    
+        <div class="form-group">
+            <label for="theme">今後取り上げて欲しいテーマがあれば教えてください。</label>
+            <textarea class="form-control" id="theme" name="theme" rows="3"></textarea>
+        </div>
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">送信</button>
+        </div>
         </form>
-	</div>
-	<div class="container footer d-flex justify-content-center mt-4">
-		<p>Copyright@ Tribal Media House.inc</p>
-	</div>
+        <div class="container footer d-flex justify-content-center mt-4">
+            <p>Copyright@ Tribal Media House.inc</p>
+        </div>
+    </div>
 </body>
 </html>

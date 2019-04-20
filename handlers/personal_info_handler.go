@@ -9,9 +9,9 @@ import (
 
 // PersonalInfo ...
 func PersonalInfo(w http.ResponseWriter, r *http.Request) {
-	// テンプレートをパース
+
 	t := template.Must(template.ParseFiles("templates/personal_info.html"))
-	// テンプレートを描画
+
 	if err := t.ExecuteTemplate(w, "personal_info.html", time.Now()); err != nil {
 		log.Fatal(err)
 	}
@@ -19,9 +19,7 @@ func PersonalInfo(w http.ResponseWriter, r *http.Request) {
 
 // Entry ...
 func Entry(w http.ResponseWriter, r *http.Request) {
-	// テンプレートをパース
 	t := template.Must(template.ParseFiles("templates/entry.html"))
-	// テンプレートを描画
 
 	if r.Method == "POST" {
 		r.ParseForm()

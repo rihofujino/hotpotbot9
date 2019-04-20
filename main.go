@@ -16,9 +16,8 @@ func main() {
 	http.HandleFunc("/personal-info", handlers.PersonalInfo)
 	http.HandleFunc("/entry", handlers.Entry)
 	http.HandleFunc("/survey", handlers.Survey)
+	http.HandleFunc("/post-survey", handlers.PostSurvey)
 
-	// This is just sample code.
-	// For actual use, you must support HTTPS by using `ListenAndServeTLS`, a reverse proxy or something else.
 	if err := http.ListenAndServe(":"+os.Getenv("PORT"), nil); err != nil {
 		log.Fatal(err)
 	}
