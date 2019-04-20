@@ -11,18 +11,18 @@
 </head>
 <body>
 		<div class="container">
-			<form method="POST">
+			<form action="/entry" method="POST">
 				<div class="row my-3 px-3">
 					<label for="name" class="col-3">名前</label>
-					<input type="name" class="form-control col-9" id="name" placeholder="田中　太郎">
+					<input type="name" class="form-control col-9" id="name" name="name" placeholder="田中　太郎">
 				</div>
 				<div class="row my-3 px-3">
 						<label for="company" class="col-3">会社名</label>
-						<input type="company" class="form-control col-9" id="company" placeholder="（株）トライバルメディアハウス">
+						<input type="company" class="form-control col-9" id="company" name="company" placeholder="（株）トライバルメディアハウス">
 					</div>
 				<div class="row my-3 px-3">
 					<label for="jobType" class="col-3">職種</label>
-					<select class="form-control col-9" id="jobType">
+					<select class="form-control col-9" id="jobType" name="jobType">
 						<option value="1">エンジニア</option>
 						<option value="2">プロダクトオーナー</option>
 						<option value="3">営業</option>
