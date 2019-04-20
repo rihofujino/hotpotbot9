@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -19,6 +20,7 @@ func Survey(w http.ResponseWriter, r *http.Request) {
 
 // PostSurvey ...
 func PostSurvey(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("debug1")
 
 	t := template.Must(template.ParseFiles("templates/postsurvey.html"))
 
