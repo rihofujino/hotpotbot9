@@ -1,0 +1,31 @@
+version: '3.3'
+services:
+  mysql:
+    container_name: mysql
+    build: ./docker/mysql
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: gyozabot_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: gyozabot
+      MYSQL_ROOT_PASSWORD: gyozabot
+    hostname: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./docker/mysql/initdb.d:/docker-entrypoint-initdb.d
+      - ./docker/mysql/conf.d:/etc/mysql/conf.d
+      - ./log/mysql:/var/log/mysql
+  app:
+    links:
+      - mysql
+    build:
+      context: .
+      dockerfile: ./docker/golang/Dockerfile
+    container_name: gyozabot
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:$GOPATH/src/github.com/heroku/gyozabot
+    command: go run main.go

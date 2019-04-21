@@ -9,6 +9,10 @@ import (
 	"github.com/heroku/gyozabot/handlers"
 )
 
+func testHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hello world\n")
+}
+
 func main() {
 	fmt.Println("Server Start...")
 
@@ -17,6 +21,8 @@ func main() {
 	http.HandleFunc("/entry", handlers.Entry)
 	http.HandleFunc("/survey", handlers.Survey)
 	http.HandleFunc("/post-survey", handlers.PostSurvey)
+
+	http.HandleFunc("/", testHandler)
 
 	if err := http.ListenAndServe(":"+os.Getenv("PORT"), nil); err != nil {
 		log.Fatal(err)
