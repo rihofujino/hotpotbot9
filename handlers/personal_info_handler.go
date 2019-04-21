@@ -1,22 +1,13 @@
 package handlers
 
 import (
-	"fmt"
 	"html/template"
 	"log"
 	"net/http"
 	"time"
 
-	"github.com/heroku/gyozabot/db"
+	"github.com/heroku/gyozabot/models"
 )
-
-//Member ...
-type Member struct {
-	ID      int
-	Name    string
-	Company string
-	JobType int
-}
 
 // PersonalInfo ...
 func PersonalInfo(w http.ResponseWriter, r *http.Request) {
@@ -39,7 +30,7 @@ func Entry(w http.ResponseWriter, r *http.Request) {
 			"jobType": r.Form["jobType"][0],
 		}
 		log.Print(formData)
-		err := save(formData)
+		err := models.Save(formData)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -47,26 +38,4 @@ func Entry(w http.ResponseWriter, r *http.Request) {
 			log.Fatal(err)
 		}
 	}
-}
-
-func save(formData map[string]string) error {
-	db, err := db.OpenMysql()
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer db.Close()
-
-	name := formData["name"]
-	company := formData["company"]
-	jobType := formData["jobtype"]
-
-	query := fmt.Sprintf("insert into member values (%s, %s, %s)", name, company, jobType)
-	log.Print(query)
-
-	_, err = db.Exec(query)
-	if err != nil {
-		return err
-	}
-
-	return nil
 }
