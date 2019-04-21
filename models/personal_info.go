@@ -25,9 +25,9 @@ func Save(formData map[string]string) error {
 
 	name := formData["name"]
 	company := formData["company"]
-	jobType := formData["jobtype"]
+	jobType := formData["jobType"]
 
-	query := fmt.Sprintf("insert into member values (%s, %s, %s)", name, company, jobType)
+	query := fmt.Sprintf("insert into gyozabot_db.member (name, company, jobtype) values ('%s', '%s', %s)", name, company, jobType)
 	log.Print(query)
 
 	_, err = db.Exec(query)
