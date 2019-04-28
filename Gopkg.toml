@@ -26,20 +26,13 @@
 
 
 [[constraint]]
-  name = "github.com/gin-gonic/gin"
-  version = "1.3.0"
+  name = "github.com/go-sql-driver/mysql"
+  version = "1.4.1"
 
 [[constraint]]
   name = "github.com/line/line-bot-sdk-go"
-  version = "6.1.0"
+  version = "6.3.0"
 
 [prune]
   go-tests = true
   unused-packages = true
-
-[metadata.heroku]
-  root-package = "github.com/heroku/gyozabot"
-  go-version = "1.11.2"
-  install = [ "./..." ]
-
-

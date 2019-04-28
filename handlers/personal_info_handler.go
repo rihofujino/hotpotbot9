@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/heroku/gyozabot/models"
+	"github.com/heroku/hotpotbot9/models"
 )
 
 // PersonalInfo ...

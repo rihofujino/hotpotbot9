@@ -2,40 +2,25 @@ package db
 
 import (
 	"database/sql"
+	"fmt"
 
-	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/lib/pq"
 )
 
-//ServerInfo ...
-type ServerInfo struct {
-	User     string
-	Password string
-	Host     string
-}
-
-var (
-	instance *ServerInfo
+const (
+	host     = "localhost"
+	port     = 5432
+	user     = "root"
+	password = "hotpotbot"
+	dbname   = "hotpotbot_db"
 )
 
-func init() {
-	instance = &ServerInfo{
-		User:     "root",
-		Password: "gyozabot",
-		Host:     "tcp(mysql:3306)",
-	}
-}
-
-//OpenMysql ...
-func OpenMysql() (*sql.DB, error) {
-	dbServerInfo := GetDbServerInfo()
-	db, err := sql.Open("mysql", dbServerInfo.User+":"+dbServerInfo.Password+"@"+dbServerInfo.Host+"/"+"?parseTime=true")
+//OpenPG ...
+func OpenPG() (*sql.DB, error) {
+	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
+	db, err := sql.Open("postgres", psqlInfo)
 	if err != nil {
 		return nil, err
 	}
 	return db, nil
-}
-
-// GetDbServerInfo ...
-func GetDbServerInfo() *ServerInfo {
-	return instance
 }

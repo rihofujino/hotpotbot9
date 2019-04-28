@@ -58,6 +58,18 @@ type MessageContentResponse struct {
 	ContentType   string
 }
 
+// MessagesNumberResponse type
+type MessagesNumberResponse struct {
+	Status  string
+	Success int64
+}
+
+// MessageQuotaResponse type
+type MessageQuotaResponse struct {
+	Type  string
+	Value int64
+}
+
 // RichMenuIDResponse type
 type RichMenuIDResponse struct {
 	RichMenuID string `json:"richMenuId"`
@@ -88,21 +100,27 @@ type LinkTokenResponse struct {
 	LinkToken string `json:"linkToken"`
 }
 
+// isSuccess checks if status code is 2xx: The action was successfully received,
+// understood, and accepted.
+func isSuccess(code int) bool {
+	return code/100 == 2
+}
+
 func checkResponse(res *http.Response) error {
-	if res.StatusCode != http.StatusOK {
-		decoder := json.NewDecoder(res.Body)
-		result := ErrorResponse{}
-		if err := decoder.Decode(&result); err != nil {
-			return &APIError{
-				Code: res.StatusCode,
-			}
-		}
+	if isSuccess(res.StatusCode) {
+		return nil
+	}
+	decoder := json.NewDecoder(res.Body)
+	result := ErrorResponse{}
+	if err := decoder.Decode(&result); err != nil {
 		return &APIError{
-			Code:     res.StatusCode,
-			Response: &result,
+			Code: res.StatusCode,
 		}
 	}
-	return nil
+	return &APIError{
+		Code:     res.StatusCode,
+		Response: &result,
+	}
 }
 
 func decodeToBasicResponse(res *http.Response) (*BasicResponse, error) {
@@ -158,6 +176,18 @@ func decodeToMessageContentResponse(res *http.Response) (*MessageContentResponse
 		ContentLength: res.ContentLength,
 	}
 	return &result, nil
+}
+
+func decodeToMessageQuotaResponse(res *http.Response) (*MessageQuotaResponse, error) {
+	if err := checkResponse(res); err != nil {
+		return nil, err
+	}
+	decoder := json.NewDecoder(res.Body)
+	result := &MessageQuotaResponse{}
+	if err := decoder.Decode(result); err != nil {
+		return nil, err
+	}
+	return result, nil
 }
 
 func decodeToRichMenuResponse(res *http.Response) (*RichMenuResponse, error) {
@@ -228,6 +258,18 @@ func decodeToLinkTokenResponse(res *http.Response) (*LinkTokenResponse, error) {
 	}
 	decoder := json.NewDecoder(res.Body)
 	result := LinkTokenResponse{}
+	if err := decoder.Decode(&result); err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+func decodeToMessagesNumberResponse(res *http.Response) (*MessagesNumberResponse, error) {
+	if err := checkResponse(res); err != nil {
+		return nil, err
+	}
+	decoder := json.NewDecoder(res.Body)
+	result := MessagesNumberResponse{}
 	if err := decoder.Decode(&result); err != nil {
 		return nil, err
 	}

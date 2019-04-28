@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/heroku/gyozabot/handlers"
+	"github.com/heroku/hotpotbot9/handlers"
 )
 
 func testHandler(w http.ResponseWriter, r *http.Request) {

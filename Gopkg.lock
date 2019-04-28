@@ -2,34 +2,30 @@
 
 
 [[projects]]
-  digest = "1:ec6f9bf5e274c833c911923c9193867f3f18788c461f76f05f62bb1510e0ae65"
-  name = "github.com/go-sql-driver/mysql"
-  packages = ["."]
+  digest = "1:bc1c0be40c67b6b4aee09d7508d5a2a52c1c116b1fa43806dad2b0d6b4d4003b"
+  name = "github.com/lib/pq"
+  packages = [
+    ".",
+    "oid",
+    "scram",
+  ]
   pruneopts = "UT"
-  revision = "72cd26f257d44c1114970e19afddcd812016007e"
-  version = "v1.4.1"
+  revision = "51e2106eed1cea199c802d2a49e91e2491b02056"
+  version = "v1.1.0"
 
 [[projects]]
-  digest = "1:fb6fce311a4b548bc7a64a9d9fb8c3867b1968b98ea09842f04bc9e5de005493"
+  digest = "1:a222bcfd79090a10c9aeb57c6a0dda90a27d9ef9db564ba6d57574b628ad035c"
   name = "github.com/line/line-bot-sdk-go"
   packages = ["linebot"]
   pruneopts = "UT"
-  revision = "4ddb1c55c843834c1167bb936d25fcfd51bd7e92"
-  version = "v6.1.0"
-
-[[projects]]
-  digest = "1:c25289f43ac4a68d88b02245742347c94f1e108c534dda442188015ff80669b3"
-  name = "google.golang.org/appengine"
-  packages = ["cloudsql"]
-  pruneopts = "UT"
-  revision = "54a98f90d1c46b7731eb8fb305d2a321c30ef610"
-  version = "v1.5.0"
+  revision = "8eff2befa64f3f728971b9f9881a7a738a83797b"
+  version = "v6.3.0"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/go-sql-driver/mysql",
+    "github.com/lib/pq",
     "github.com/line/line-bot-sdk-go/linebot",
   ]
   solver-name = "gps-cdcl"
