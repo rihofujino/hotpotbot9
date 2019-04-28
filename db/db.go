@@ -10,7 +10,7 @@ import (
 const (
 	host     = "localhost"
 	port     = 5432
-	user     = "root"
+	user     = "hotpotbot"
 	password = "hotpotbot"
 	dbname   = "hotpotbot_db"
 )
