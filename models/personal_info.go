@@ -27,7 +27,7 @@ func Save(formData map[string]string) error {
 	company := formData["company"]
 	jobType := formData["jobType"]
 
-	query := fmt.Sprintf("insert into hotpotbot_db.member (name, company, jobtype) values ('%s', '%s', %s)", name, company, jobType)
+	query := fmt.Sprintf("insert into member values ('%s', '%s', %s)", name, company, jobType)
 	log.Print(query)
 
 	_, err = db.Exec(query)

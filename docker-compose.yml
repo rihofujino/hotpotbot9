@@ -1,18 +1,16 @@
 version: '3.3'
 services:
-  db:
+  postgres:
     container_name: psql
     image: postgres:latest
     restart: always
     ports:
       - "5432:5432"
     volumes:
-      - ./docker/psql/initdb.d:/docker-entrypoint-initdb.d
+      - ./docker/psql/init:/docker-entrypoint-initdb.d
     environment:
-      POSTGRES_USER: hotpotbot
-      POSTGRES_PASSWORD: hotpotbot
-      POSTGRES_DB: hotpotbot_db
-      POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password
   app:
     container_name: hotpotbot9
     restart: always
@@ -20,9 +18,10 @@ services:
       context: .
       dockerfile: ./docker/golang/Dockerfile
     depends_on:
-      - db
+      - postgres
     ports:
       - "8000:8000"
     volumes:
       - .:$GOPATH/src/github.com/heroku/hotpotbot9
     command: go run main.go
+
