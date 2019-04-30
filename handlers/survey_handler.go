@@ -5,6 +5,13 @@ import (
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/heroku/hotpotbot9/models"
+)
+
+var (
+	//PostSurvey ...
+	PostSurvey models.PostSurvey
 )
 
 // Survey ...

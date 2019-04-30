@@ -9,8 +9,9 @@ services:
     volumes:
       - ./docker/psql/init:/docker-entrypoint-initdb.d
     environment:
-      - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=hotpotbot_db
   app:
     container_name: hotpotbot9
     restart: always

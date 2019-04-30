@@ -7,16 +7,25 @@ import (
 	"github.com/heroku/hotpotbot9/db"
 )
 
-//Member ...
-type Member struct {
-	ID      int
-	Name    string
-	Company string
-	JobType int
-}
+type (
+	//Member ...
+	Member struct {
+		ID      int
+		Name    string
+		Company string
+		JobType int
+	}
+	//PersonalInfo ...
+	PersonalInfo interface {
+		Save(formData map[string]string) error
+	}
+
+	//PersonalInfoImpl ...
+	PersonalInfoImpl struct{}
+)
 
 //Save ...
-func Save(formData map[string]string) error {
+func (p *PersonalInfoImpl) Save(formData map[string]string) error {
 	db, err := db.OpenPG()
 	if err != nil {
 		log.Fatal(err)
@@ -27,7 +36,7 @@ func Save(formData map[string]string) error {
 	company := formData["company"]
 	jobType := formData["jobType"]
 
-	query := fmt.Sprintf("insert into member values ('%s', '%s', %s)", name, company, jobType)
+	query := fmt.Sprintf("INSERT INTO member (name, company, jobType, created_at) VALUES ('%s', '%s', %s, CURRENT_TIMESTAMP)", name, company, jobType)
 	log.Print(query)
 
 	_, err = db.Exec(query)

@@ -9,6 +9,11 @@ import (
 	"github.com/heroku/hotpotbot9/models"
 )
 
+var (
+	//PersonalInfo ...
+	PersonalInfo models.PersonalInfo
+)
+
 // PersonalInfo ...
 func PersonalInfo(w http.ResponseWriter, r *http.Request) {
 	t := template.Must(template.ParseFiles("templates/personal_info.html"))
@@ -30,7 +35,7 @@ func Entry(w http.ResponseWriter, r *http.Request) {
 			"jobType": r.Form["jobType"][0],
 		}
 		log.Print(formData)
-		err := models.Save(formData)
+		err := PersonalInfo.Save(formData)
 		if err != nil {
 			log.Fatal(err)
 		}
