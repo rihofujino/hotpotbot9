@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"github.com/heroku/hotpotbot9/handlers"
+	"github.com/heroku/hotpotbot9/models"
 )
 
 func testHandler(w http.ResponseWriter, r *http.Request) {
@@ -15,6 +16,11 @@ func testHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	fmt.Println("Server Start...")
+
+	// DAO initialize
+	fmt.Println("Initialize dao classes ...")
+	handlers.PersonalInfoLogic = models.NewPersonalInfoLogic()
+	handlers.SurveyPostLogic = models.NewSurveyPostLogic()
 
 	http.HandleFunc("/webhook", handlers.Main)
 	http.HandleFunc("/personal-info", handlers.PersonalInfoEdit)

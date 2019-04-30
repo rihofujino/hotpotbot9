@@ -8,24 +8,22 @@ import (
 )
 
 type (
-	//Member ...
-	Member struct {
-		ID      int
-		Name    string
-		Company string
-		JobType int
-	}
-	//PersonalInfoRepository ...
-	PersonalInfoRepository interface {
+	//PersonalInfoLogic ...
+	PersonalInfoLogic interface {
 		Save(formData map[string]string) error
 	}
 
-	//PersonalInfoRepositoryImpl ...
-	PersonalInfoRepositoryImpl struct{}
+	//personalInfoLogicImpl ...
+	personalInfoLogicImpl struct{}
 )
 
+// NewPersonalInfoLogic ...
+func NewPersonalInfoLogic() PersonalInfoLogic {
+	return &personalInfoLogicImpl{}
+}
+
 //Save ...
-func (p *PersonalInfoRepositoryImpl) Save(formData map[string]string) error {
+func (p *personalInfoLogicImpl) Save(formData map[string]string) error {
 	db, err := db.OpenPG()
 	if err != nil {
 		log.Fatal(err)

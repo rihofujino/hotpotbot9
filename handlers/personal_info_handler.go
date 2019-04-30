@@ -10,8 +10,8 @@ import (
 )
 
 var (
-	//PersonalInfoRepository ...
-	PersonalInfoRepository models.PersonalInfoRepository
+	//PersonalInfoLogic ...
+	PersonalInfoLogic models.PersonalInfoLogic
 )
 
 // PersonalInfoEdit ...
@@ -35,7 +35,7 @@ func PersonalInfoPost(w http.ResponseWriter, r *http.Request) {
 			"jobType": r.Form["jobType"][0],
 		}
 		log.Print(formData)
-		err := PersonalInfoRepository.Save(formData)
+		err := PersonalInfoLogic.Save(formData)
 		if err != nil {
 			log.Fatal(err)
 		}

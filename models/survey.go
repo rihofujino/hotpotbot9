@@ -3,32 +3,27 @@ package models
 import (
 	"fmt"
 	"log"
-	"time"
 
 	"github.com/heroku/hotpotbot9/db"
 )
 
 type (
-	//Survey ...
-	Survey struct {
-		Name         string
-		Satisfaction int
-		Impression   string
-		ExpectTheme  string
-		CreatedAt    time.Time
-	}
-
-	//SurveyPostRepository ...
-	SurveyPostRepository interface {
+	//SurveyPostLogic ...
+	SurveyPostLogic interface {
 		Save(formData map[string]string) error
 	}
 
-	//SurveyPostRepositoryImpl ...
-	SurveyPostRepositoryImpl struct{}
+	//surveyPostLogicImpl ...
+	surveyPostLogicImpl struct{}
 )
 
+// NewSurveyPostLogic ...
+func NewSurveyPostLogic() SurveyPostLogic {
+	return &surveyPostLogicImpl{}
+}
+
 //Save ...
-func (p *SurveyPostRepositoryImpl) Save(formData map[string]string) error {
+func (p *surveyPostLogicImpl) Save(formData map[string]string) error {
 	db, err := db.OpenPG()
 	if err != nil {
 		log.Fatal(err)
@@ -40,7 +35,7 @@ func (p *SurveyPostRepositoryImpl) Save(formData map[string]string) error {
 	impression := formData["impression"]
 	theme := formData["theme"]
 
-	query := fmt.Sprintf("INSERT INTO survey (name, satisfaction, impression, theme, created_at) VALUES ('%s', '%s', '%s', '%s', CURRENT_TIMESTAMP;", name, satisfaction, impression, theme)
+	query := fmt.Sprintf("INSERT INTO survey (name, satisfaction, impression, expect_theme, created_at) VALUES ('%s', '%s', '%s', '%s', CURRENT_TIMESTAMP);", name, satisfaction, impression, theme)
 	log.Print(query)
 
 	_, err = db.Exec(query)

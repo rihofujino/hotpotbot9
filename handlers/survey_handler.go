@@ -10,8 +10,8 @@ import (
 )
 
 var (
-	//SurveyPostRepository ...
-	SurveyPostRepository models.SurveyPostRepository
+	//SurveyPostLogic ...
+	SurveyPostLogic models.SurveyPostLogic
 )
 
 // SurveyEdit ...
@@ -32,12 +32,13 @@ func SurveyPost(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" {
 		r.ParseForm()
 		formData := map[string]string{
+			"name":         r.Form["name"][0],
 			"satisfaction": r.Form["satisfaction"][0],
 			"impression":   r.Form["impression"][0],
 			"theme":        r.Form["theme"][0],
 		}
 		log.Print(formData)
-		err := SurveyPostRepository.Save(formData)
+		err := SurveyPostLogic.Save(formData)
 		if err != nil {
 			log.Fatal(err)
 		}
