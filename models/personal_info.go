@@ -15,17 +15,17 @@ type (
 		Company string
 		JobType int
 	}
-	//PersonalInfo ...
-	PersonalInfo interface {
+	//PersonalInfoRepository ...
+	PersonalInfoRepository interface {
 		Save(formData map[string]string) error
 	}
 
-	//PersonalInfoImpl ...
-	PersonalInfoImpl struct{}
+	//PersonalInfoRepositoryImpl ...
+	PersonalInfoRepositoryImpl struct{}
 )
 
 //Save ...
-func (p *PersonalInfoImpl) Save(formData map[string]string) error {
+func (p *PersonalInfoRepositoryImpl) Save(formData map[string]string) error {
 	db, err := db.OpenPG()
 	if err != nil {
 		log.Fatal(err)
@@ -36,7 +36,7 @@ func (p *PersonalInfoImpl) Save(formData map[string]string) error {
 	company := formData["company"]
 	jobType := formData["jobType"]
 
-	query := fmt.Sprintf("INSERT INTO member (name, company, jobType, created_at) VALUES ('%s', '%s', %s, CURRENT_TIMESTAMP)", name, company, jobType)
+	query := fmt.Sprintf("INSERT INTO member (name, company, jobType, created_at) VALUES ('%s', '%s', %s, CURRENT_TIMESTAMP);", name, company, jobType)
 	log.Print(query)
 
 	_, err = db.Exec(query)

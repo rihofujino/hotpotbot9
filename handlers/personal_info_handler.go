@@ -10,12 +10,12 @@ import (
 )
 
 var (
-	//PersonalInfo ...
-	PersonalInfo models.PersonalInfo
+	//PersonalInfoRepository ...
+	PersonalInfoRepository models.PersonalInfoRepository
 )
 
-// PersonalInfo ...
-func PersonalInfo(w http.ResponseWriter, r *http.Request) {
+// PersonalInfoEdit ...
+func PersonalInfoEdit(w http.ResponseWriter, r *http.Request) {
 	t := template.Must(template.ParseFiles("templates/personal_info.html"))
 
 	if err := t.ExecuteTemplate(w, "personal_info.html", time.Now()); err != nil {
@@ -23,8 +23,8 @@ func PersonalInfo(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// Entry ...
-func Entry(w http.ResponseWriter, r *http.Request) {
+// PersonalInfoPost ...
+func PersonalInfoPost(w http.ResponseWriter, r *http.Request) {
 	t := template.Must(template.ParseFiles("templates/entry.html"))
 
 	if r.Method == "POST" {
@@ -35,7 +35,7 @@ func Entry(w http.ResponseWriter, r *http.Request) {
 			"jobType": r.Form["jobType"][0],
 		}
 		log.Print(formData)
-		err := PersonalInfo.Save(formData)
+		err := PersonalInfoRepository.Save(formData)
 		if err != nil {
 			log.Fatal(err)
 		}

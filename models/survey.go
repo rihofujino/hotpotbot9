@@ -18,17 +18,17 @@ type (
 		CreatedAt    time.Time
 	}
 
-	//PostSurvey ...
-	PostSurvey interface {
+	//SurveyPostRepository ...
+	SurveyPostRepository interface {
 		Save(formData map[string]string) error
 	}
 
-	//PostSurveyImpl ...
-	PostSurveyImpl struct{}
+	//SurveyPostRepositoryImpl ...
+	SurveyPostRepositoryImpl struct{}
 )
 
 //Save ...
-func (p *PostSurveyImpl) Save(formData map[string]string) error {
+func (p *SurveyPostRepositoryImpl) Save(formData map[string]string) error {
 	db, err := db.OpenPG()
 	if err != nil {
 		log.Fatal(err)
@@ -40,7 +40,7 @@ func (p *PostSurveyImpl) Save(formData map[string]string) error {
 	impression := formData["impression"]
 	theme := formData["theme"]
 
-	query := fmt.Sprintf("INSERT INTO survey (name, satisfaction, impression, theme, created_at) VALUES ('%s', '%s', '%s', '%s', CURRENT_TIMESTAMP)", name, satisfaction, impression, theme)
+	query := fmt.Sprintf("INSERT INTO survey (name, satisfaction, impression, theme, created_at) VALUES ('%s', '%s', '%s', '%s', CURRENT_TIMESTAMP;", name, satisfaction, impression, theme)
 	log.Print(query)
 
 	_, err = db.Exec(query)

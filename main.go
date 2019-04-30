@@ -17,10 +17,10 @@ func main() {
 	fmt.Println("Server Start...")
 
 	http.HandleFunc("/webhook", handlers.Main)
-	http.HandleFunc("/personal-info", handlers.PersonalInfo)
-	http.HandleFunc("/entry", handlers.Entry)
-	http.HandleFunc("/survey", handlers.Survey)
-	http.HandleFunc("/post-survey", handlers.PostSurvey)
+	http.HandleFunc("/personal-info", handlers.PersonalInfoEdit)
+	http.HandleFunc("/entry", handlers.PersonalInfoPost)
+	http.HandleFunc("/survey", handlers.SurveyEdit)
+	http.HandleFunc("/post-survey", handlers.SurveyPost)
 
 	http.HandleFunc("/", testHandler)
 

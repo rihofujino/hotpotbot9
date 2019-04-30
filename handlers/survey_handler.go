@@ -10,12 +10,12 @@ import (
 )
 
 var (
-	//PostSurvey ...
-	PostSurvey models.PostSurvey
+	//SurveyPostRepository ...
+	SurveyPostRepository models.SurveyPostRepository
 )
 
-// Survey ...
-func Survey(w http.ResponseWriter, r *http.Request) {
+// SurveyEdit ...
+func SurveyEdit(w http.ResponseWriter, r *http.Request) {
 
 	t := template.Must(template.ParseFiles("templates/survey.html"))
 
@@ -24,8 +24,8 @@ func Survey(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// PostSurvey ...
-func PostSurvey(w http.ResponseWriter, r *http.Request) {
+// SurveyPost ...
+func SurveyPost(w http.ResponseWriter, r *http.Request) {
 
 	t := template.Must(template.ParseFiles("templates/postsurvey.html"))
 
@@ -37,6 +37,10 @@ func PostSurvey(w http.ResponseWriter, r *http.Request) {
 			"theme":        r.Form["theme"][0],
 		}
 		log.Print(formData)
+		err := SurveyPostRepository.Save(formData)
+		if err != nil {
+			log.Fatal(err)
+		}
 		if err := t.ExecuteTemplate(w, "postsurvey.html", time.Now()); err != nil {
 			log.Fatal(err)
 		}
