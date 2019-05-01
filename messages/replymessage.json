@@ -100,7 +100,7 @@
         "action": {
           "type": "uri",
           "label": "出席登録",
-          "uri": "line://app/1645446957-4ZgJ3QzA"
+          "uri": "line://app/1567914408-R2wVYwrg"
         }
       },
       {
@@ -113,7 +113,7 @@
         "action": {
           "type": "uri",
           "label": "イベント後アンケート",
-          "uri": "line://app/1645446957-YQBeqZ2G"
+          "uri": "line://app/1567914408-LDOypOXA"
         }
       }
     ],
