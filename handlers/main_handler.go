@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -40,7 +41,10 @@ func Main(w http.ResponseWriter, r *http.Request) {
 
 	for _, event := range events {
 		if event.Type == linebot.EventTypeMessage {
+			fmt.Println("debug1")
+			fmt.Println(event.ReplyToken)
 			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewFlexMessage("エンジニア寄せ鍋", container)).Do(); err != nil {
+				fmt.Println("debug2")
 				log.Fatal(err)
 			}
 		}
