@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -12,7 +11,6 @@ import (
 
 // Main ...
 func Main(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("debug1")
 	bot, err := linebot.New(
 		os.Getenv("CHANNEL_SECRET"),
 		os.Getenv("CHANNEL_TOKEN"),
@@ -20,8 +18,6 @@ func Main(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	fmt.Println("debug2")
 
 	events, err := bot.ParseRequest(r)
 	if err != nil {
@@ -32,8 +28,6 @@ func Main(w http.ResponseWriter, r *http.Request) {
 		}
 		return
 	}
-
-	fmt.Println("debug3")
 
 	data, err := ioutil.ReadFile("messages/replymessage.json")
 	if err != nil {
