@@ -13,7 +13,7 @@
 		<div class="container">
 				<form action="/entry" method="POST">
 					<div class="row my-3 px-3">
-							<label for="name" class="col-3">お名前</label>
+							<label for="name" class="col-3">お名前<span class="text-danger">*</span></label>
 							<input type="name" class="form-control col-9" id="name" name="name" placeholder="田中　太郎" required>
 					</div>
 					<div class="row my-3 px-3">
@@ -21,7 +21,7 @@
 							<input type="company" class="form-control col-9" id="company" name="company" placeholder="（株）トライバルメディアハウス">
 					</div>
 					<div class="row my-3 px-3">
-							<label for="jobType" class="col-3">職種</label>
+							<label for="jobType" class="col-3">職種<span class="text-danger">*</span></label>
 							<select class="form-control col-9" id="jobType" name="jobType">
 									<option value="1">エンジニア</option>
 									<option value="2">プロダクトオーナー</option>
