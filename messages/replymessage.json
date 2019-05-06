@@ -1,176 +1,122 @@
 {
-  "type": "flex",
-  "altText": "Flex Message",
-  "contents": {
-    "type": "bubble",
-    "hero": {
-      "type": "image",
-      "url": "https://d2v9k5u4v94ulw.cloudfront.net/small_light(dw=1440,dh=630,da=s,ds=s,cw=1440,ch=630,cc=FFFFFF)/assets/images/1704367/original/5c52d098-bb2f-4a6e-b031-c6065d6d32b9.jpeg?1499327733",
-      "size": "full",
-      "aspectRatio": "20:13",
-      "aspectMode": "cover",
-      "action": {
-        "type": "uri",
-        "label": "寄せ鍋",
-        "uri": "https://yosenabe.connpass.com/"
-      }
-    },
-    "body": {
-      "type": "box",
-      "layout": "vertical",
-      "contents": [
-        {
-          "type": "text",
-          "text": "エンジニア寄せ鍋 #9",
-          "size": "lg",
-          "weight": "bold"
-        },
-        {
-          "type": "box",
-          "layout": "vertical",
-          "spacing": "sm",
-          "margin": "lg",
-          "contents": [
-            {
-              "type": "box",
-              "layout": "baseline",
-              "spacing": "sm",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "開場",
-                  "flex": 2,
-                  "size": "sm",
-                  "color": "#AAAAAA"
-                },
-                {
-                  "type": "text",
-                  "text": "東京都中央区銀座2-15-2 東急銀座二丁目ビル 地下1F研修ルーム",
-                  "flex": 5,
-                  "size": "sm",
-                  "color": "#666666",
-                  "wrap": true
-                }
-              ]
-            },
-            {
-              "type": "box",
-              "layout": "baseline",
-              "spacing": "sm",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "アクセス",
-                  "flex": 2,
-                  "size": "sm",
-                  "color": "#AAAAAA"
-                },
-                {
-                  "type": "text",
-                  "text": "こちらからご確認ください",
-                  "flex": 5,
-                  "size": "sm",
-                  "color": "#666666",
-                  "action": {
-                    "type": "uri",
-                    "uri": "https://www.tribalmedia.co.jp/company/access/"
-                  }
-                }
-              ]
-            },
-            {
-              "type": "box",
-              "layout": "baseline",
-              "spacing": "sm",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "開場",
-                  "flex": 2,
-                  "size": "sm",
-                  "color": "#AAAAAA"
-                },
-                {
-                  "type": "text",
-                  "text": "18:30",
-                  "flex": 5,
-                  "size": "sm",
-                  "color": "#666666",
-                  "wrap": true
-                }
-              ]
-            },
-            {
-              "type": "box",
-              "layout": "baseline",
-              "spacing": "sm",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "時間",
-                  "flex": 2,
-                  "size": "sm",
-                  "color": "#AAAAAA"
-                },
-                {
-                  "type": "text",
-                  "text": "18:30 ~ 20:00（20:10 ~ 懇親会）",
-                  "flex": 5,
-                  "size": "sm",
-                  "color": "#666666",
-                  "wrap": true
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    "footer": {
-      "type": "box",
-      "layout": "vertical",
-      "flex": 0,
-      "spacing": "sm",
-      "contents": [
-        {
-          "type": "button",
-          "action": {
-            "type": "uri",
-            "label": "イベント詳細",
-            "uri": "https://yosenabe.connpass.com/event/118014/"
-          },
-          "height": "sm",
-          "style": "link"
-        },
-        {
-          "type": "separator"
-        },
-        {
-          "type": "button",
-          "action": {
-            "type": "uri",
-            "label": "出席登録",
-            "uri": "line://app/1567914408-R2wVYwrg"
-          },
-          "height": "sm",
-          "style": "link"
-        },
-        {
-          "type": "separator"
-        },
-        {
-          "type": "button",
-          "action": {
-            "type": "uri",
-            "label": "イベント後アンケート",
-            "uri": "line://app/1567914408-LDOypOXA"
-          }
-        },
-        {
-          "type": "spacer",
-          "size": "sm"
-        }
-      ]
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "https://d2v9k5u4v94ulw.cloudfront.net/small_light(dw=1440,dh=630,da=s,ds=s,cw=1440,ch=630,cc=FFFFFF)/assets/images/1704367/original/5c52d098-bb2f-4a6e-b031-c6065d6d32b9.jpeg?1499327733",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "cover",
+    "action": {
+      "type": "uri",
+      "uri": "https://yosenabe.connpass.com/"
     }
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "エンジニア寄せ鍋 #9",
+        "weight": "bold",
+        "size": "xl"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "margin": "lg",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "Place",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 1
+              },
+              {
+                "type": "text",
+                "text": "〒104-0061 東京都中央区銀座2-15-2 東急銀座二丁目ビル 地下1F研修ルーム",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 5
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "Time",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 1
+              },
+              {
+                "type": "text",
+                "text": "2019.5.31(金) 18:30 - 20:10",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 5
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "イベント詳細",
+          "uri": "https://yosenabe.connpass.com/event/118014/"
+        }
+      },
+      {
+        "type": "separator"
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "出席登録",
+          "uri": "line://app/1567914408-R2wVYwrg"
+        }
+      },
+      {
+        "type": "separator"
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "イベント後アンケート",
+          "uri": "line://app/1567914408-LDOypOXA"
+        }
+      }
+    ],
+    "flex": 0
   }
 }
