@@ -34,7 +34,7 @@
             "contents": [
               {
                 "type": "text",
-                "text": "Place",
+                "text": "会場",
                 "color": "#aaaaaa",
                 "size": "sm",
                 "flex": 1
@@ -82,14 +82,58 @@
             "contents": [
               {
                 "type": "text",
-                "text": "Time",
+                "text": "日時",
                 "color": "#aaaaaa",
                 "size": "sm",
                 "flex": 1
               },
               {
                 "type": "text",
-                "text": "2019.5.31(金) 18:30 - 20:10",
+                "text": "2019/5/31 (金)",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 5
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "開場",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 1
+              },
+              {
+                "type": "text",
+                "text": "18:30",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 5
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "時間",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 1
+              },
+              {
+                "type": "text",
+                "text": "19:00 - 20:00（20:10~懇親会）",
                 "wrap": true,
                 "color": "#666666",
                 "size": "sm",
