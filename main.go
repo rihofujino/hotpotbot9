@@ -13,14 +13,10 @@ import (
 func main() {
 	fmt.Println("Server Start...")
 
-	// DAO initialize
-	fmt.Println("Initialize dao classes ...")
+	// class initialize
+	fmt.Println("Initialize classes ...")
 	handlers.PersonalInfoLogic = models.NewPersonalInfoLogic()
 	handlers.SurveyPostLogic = models.NewSurveyPostLogic()
-
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hello world\n")
-	})
 
 	http.HandleFunc("/webhook", handlers.Main)
 	http.HandleFunc("/personal-info", handlers.PersonalInfoEdit)
