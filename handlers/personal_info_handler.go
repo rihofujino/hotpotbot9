@@ -17,16 +17,7 @@ var (
 
 // PersonalInfoEdit ...
 func PersonalInfoEdit(w http.ResponseWriter, r *http.Request) {
-	t := template.Must(template.ParseFiles("templates/personal_info.html"))
-
-	if err := t.ExecuteTemplate(w, "personal_info.html", time.Now()); err != nil {
-		log.Fatal(err)
-	}
-}
-
-// PersonalInfoPost ...
-func PersonalInfoPost(w http.ResponseWriter, r *http.Request) {
-	t := template.Must(template.ParseFiles("templates/entry.html"))
+	data := map[string]interface{}{}
 
 	if r.Method == "POST" {
 		r.ParseForm()
@@ -39,12 +30,45 @@ func PersonalInfoPost(w http.ResponseWriter, r *http.Request) {
 			"jobType": r.Form["jobType"][0],
 		}
 		log.Print(formData)
-		err := PersonalInfoLogic.Save(formData)
-		if err != nil {
-			log.Fatal(err)
-		}
-		if err := t.ExecuteTemplate(w, "entry.html", time.Now()); err != nil {
-			log.Fatal(err)
+
+		if e := personalInfoFormValidator(formData); e != nil {
+			data["formErrors"] = e
+		} else {
+			err := PersonalInfoLogic.Save(formData)
+			if err != nil {
+				log.Fatal(err)
+			}
+			w.Header().Set("Content-Type", "text/html")
+			w.Header().Set("location", "/entry")
+			w.WriteHeader(http.StatusSeeOther)
+			return
 		}
 	}
+
+	t := template.Must(template.ParseFiles("templates/personal_info.html"))
+	if err := t.ExecuteTemplate(w, "personal_info.html", data); err != nil {
+		log.Fatal(err)
+	}
+}
+
+// Entry ...
+func Entry(w http.ResponseWriter, r *http.Request) {
+	t := template.Must(template.ParseFiles("templates/entry.html"))
+	if err := t.ExecuteTemplate(w, "entry.html", time.Now()); err != nil {
+		log.Fatal(err)
+	}
+}
+
+func personalInfoFormValidator(formData map[string]string) map[string]error {
+	e := make(map[string]error)
+
+	userID := formData["userID"]
+	pi, err := PersonalInfoLogic.GetByUserID(userID)
+	if err != nil {
+		log.Fatal(err)
+	}
+	if pi != nil {
+		e["userID"] = fmt.Errorf("出席登録済みです")
+	}
+	return e
 }

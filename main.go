@@ -20,7 +20,7 @@ func main() {
 
 	http.HandleFunc("/webhook", handlers.Main)
 	http.HandleFunc("/personal-info", handlers.PersonalInfoEdit)
-	http.HandleFunc("/entry", handlers.PersonalInfoPost)
+	http.HandleFunc("/entry", handlers.Entry)
 	http.HandleFunc("/survey", handlers.SurveyEdit)
 	http.HandleFunc("/post-survey", handlers.SurveyPost)
 

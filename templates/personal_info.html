@@ -11,8 +11,11 @@
     <title>参加者情報</title>
 </head>
 <body>
+	{{if .formErrors}}
+		{{.formErrors}}
+	{{end}}
 		<div class="container">
-				<form action="/entry" method="POST">
+				<form method="POST">
 					<input type="hidden" id="user_id" name="user_id" value="">
 					<div class="row my-3 px-3">
 							<label for="name" class="col-3">お名前<span class="text-danger">*</span></label>
