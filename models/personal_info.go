@@ -43,7 +43,8 @@ func (p *personalInfoLogicImpl) GetByUserID(userID string) (*PersonalInfo, error
 	}
 	defer db.Close()
 
-	rows, err := db.Query(`select id, user_id, name, company, jobtype from member where user_id='?'`, userID)
+	query := fmt.Sprintf("select id, user_id, name, company, jobtype from member where user_id=%s", userID)
+	rows, err := db.Query(query)
 	if err != nil {
 		log.Fatal(err)
 	}
