@@ -41,11 +41,10 @@
 	</div>
 
 	<script type="text/javascript">
-		const userID = document.getElementById('user_id');
 		liff.init(
 			data => {
-					const uId = data.context.userId;
-					userID.setAttribute("value", uId)
+					const userID = data.context.userId;
+					document.getElementById('user_id').setAttribute("value", uId)
 			},
 			err => {
 					console.log('error', err);
