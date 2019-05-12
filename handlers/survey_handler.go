@@ -68,7 +68,7 @@ func surveyFormValidator(formData map[string]string) map[string]error {
 		log.Fatal(err)
 	}
 	log.Print(count)
-	if count > 0 {
+	if count != 0 {
 		e["userID"] = fmt.Errorf("回答済みです")
 	}
 	return e
