@@ -66,7 +66,6 @@ func (p *surveyRegisterLogicImpl) Save(formData map[string]string) error {
 	theme := formData["theme"]
 
 	query := fmt.Sprintf("INSERT INTO survey (user_id, satisfaction, impression, expect_theme, created_at) VALUES ('%s', '%s', '%s', '%s', CURRENT_TIMESTAMP);", userID, satisfaction, impression, theme)
-	log.Print(query)
 
 	_, err = db.Exec(query)
 	if err != nil {
