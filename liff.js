@@ -1,10 +1,12 @@
-// window.onload = function (e) {
-//     liff.init(function (data) {
-//         initializeApp(data);
-//         console.log(data)
-//         const userId = data.context.userId;
-//         console.log("this is userid");
-//         console.log(userId);
-//     });
-// };
-
+//liff init
+const lifftest = document.getElementById('lifftest');
+liff.init(
+    
+    data => {
+        const userId = data.context.userId;
+        lifftest.innerText = userId;
+    },
+    err => {
+        console.log('error', err);
+    }
+);

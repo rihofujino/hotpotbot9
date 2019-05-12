@@ -5,6 +5,7 @@ set -e
 psql -v ON_ERROR_STOP=1 --username postgres --dbname hotpotbot_db <<-EOSQL   
     CREATE TABLE member (
         ID SERIAL,
+        USER_ID VARCHAR(200) NOT NULL, 
         NAME VARCHAR(32) NOT NULL, 
         COMPANY VARCHAR(32), 
         JOBTYPE INT,
