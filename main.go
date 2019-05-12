@@ -22,7 +22,7 @@ func main() {
 	http.HandleFunc("/personal-info", handlers.PersonalInfoEdit)
 	http.HandleFunc("/entry", handlers.Entry)
 	http.HandleFunc("/survey", handlers.SurveyEdit)
-	http.HandleFunc("/post-survey", handlers.SurveyPost)
+	http.HandleFunc("/survey-registered", handlers.SurveyRegistered)
 
 	if err := http.ListenAndServe(":"+os.Getenv("PORT"), nil); err != nil {
 		log.Fatal(err)

@@ -1,41 +1,71 @@
 package models
 
 import (
+	"database/sql"
 	"fmt"
 	"log"
+	"time"
 
 	"github.com/heroku/hotpotbot9/db"
 )
 
 type (
-	//SurveyPostLogic ...
-	SurveyPostLogic interface {
+	//SurveyRegisterLogic ...
+	SurveyRegisterLogic interface {
+		CountByUserID(userID string) (int64, error)
 		Save(formData map[string]string) error
 	}
 
-	//surveyPostLogicImpl ...
-	surveyPostLogicImpl struct{}
+	//surveyRegisterLogicImpl ...
+	surveyRegisterLogicImpl struct{}
+
+	//Survey ...
+	Survey struct {
+		UserID       string         `db:"user_id"`
+		Satisfaction int64          `db:"satisfaction"`
+		Impression   sql.NullString `db:"satisfaction"`
+		Theme        sql.NullString `db:"expect_theme"`
+		CreatedAt    *time.Time     `db:"created_at"`
+	}
 )
 
-// NewSurveyPostLogic ...
-func NewSurveyPostLogic() SurveyPostLogic {
-	return &surveyPostLogicImpl{}
+// NewSurveyRegisterLogic ...
+func NewSurveyRegisterLogic() SurveyRegisterLogic {
+	return &surveyRegisterLogicImpl{}
 }
 
-//Save ...
-func (p *surveyPostLogicImpl) Save(formData map[string]string) error {
+//CountByUserID ...
+func (p *surveyRegisterLogicImpl) CountByUserID(userID string) (int64, error) {
 	db, err := db.OpenPG()
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer db.Close()
 
-	name := formData["name"]
+	var count int64
+	query := fmt.Sprintf("select count(*) from survey where user_id = '%s';", userID)
+	row := db.QueryRow(query)
+	err = row.Scan(&count)
+	if err != nil {
+		return 0, err
+	}
+	return count, nil
+}
+
+//Save ...
+func (p *surveyRegisterLogicImpl) Save(formData map[string]string) error {
+	db, err := db.OpenPG()
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
+
+	userID := formData["userID"]
 	satisfaction := formData["satisfaction"]
 	impression := formData["impression"]
 	theme := formData["theme"]
 
-	query := fmt.Sprintf("INSERT INTO survey (name, satisfaction, impression, expect_theme, created_at) VALUES ('%s', '%s', '%s', '%s', CURRENT_TIMESTAMP);", name, satisfaction, impression, theme)
+	query := fmt.Sprintf("INSERT INTO survey (userID, satisfaction, impression, expect_theme, created_at) VALUES ('%s', '%s', '%s', '%s', CURRENT_TIMESTAMP);", userID, satisfaction, impression, theme)
 	log.Print(query)
 
 	_, err = db.Exec(query)

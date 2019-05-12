@@ -13,7 +13,7 @@ psql -v ON_ERROR_STOP=1 --username postgres --dbname hotpotbot_db <<-EOSQL
     );
     CREATE TABLE survey (
         ID SERIAL,
-        NAME VARCHAR(32) NOT NULL, 
+        USER_ID VARCHAR(200) NOT NULL, 
         SATISFACTION INT NOT NULL,
         IMPRESSION TEXT, 
         EXPECT_THEME TEXT,
