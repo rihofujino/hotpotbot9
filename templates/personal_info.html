@@ -39,5 +39,17 @@
 	<div class="container footer d-flex justify-content-center mt-4">
 		<p>Copyright@ Tribal Media House.inc</p>
 	</div>
+	<script type="text/javascript">
+		const lifftest = document.getElementById('lifftest');
+		liff.init(
+			data => {
+					const userId = data.context.userId;
+					lifftest.innerText = userId;
+			},
+			err => {
+					console.log('error', err);
+			}
+		);
+	</script>
 </body>
 </html>
