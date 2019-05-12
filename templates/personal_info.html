@@ -41,11 +41,11 @@
 	</div>
 
 	<script type="text/javascript">
-		const IDSpace = document.getElementById('user_id');
+		const UIDSpace = document.getElementById('user_id');
 		liff.init(
 			data => {
-					const userID = data.context.userId;
-					IDSpace.setAttribute("value", uId)
+					const userId = data.context.userId;
+					UIDSpace.setAttribute("value", userId);
 			},
 			err => {
 					console.log('error', err);
