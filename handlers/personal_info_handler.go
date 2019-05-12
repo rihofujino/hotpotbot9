@@ -30,6 +30,7 @@ func PersonalInfoPost(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" {
 		r.ParseForm()
 		formData := map[string]string{
+			"userID":  r.Form["user_id"][0],
 			"name":    r.Form["name"][0],
 			"company": r.Form["company"][0],
 			"jobType": r.Form["jobType"][0],
