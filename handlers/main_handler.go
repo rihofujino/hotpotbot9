@@ -39,7 +39,7 @@ func Main(w http.ResponseWriter, r *http.Request) {
 	}
 
 	for _, event := range events {
-		if event.Type == linebot.EventTypeFollow {
+		if event.Type == linebot.EventTypeMessage {
 			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewFlexMessage("エンジニア寄せ鍋", container)).Do(); err != nil {
 				log.Fatal(err)
 			}
