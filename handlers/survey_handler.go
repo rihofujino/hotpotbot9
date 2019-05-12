@@ -33,7 +33,11 @@ func SurveyEdit(w http.ResponseWriter, r *http.Request) {
 
 		if e := surveyFormValidator(formData); e != nil {
 			data["formErrors"] = e
+			log.Print("e != nil")
+			log.Print(data)
 		} else {
+			log.Print("e = nil")
+			log.Print(data)
 			err := SurveyRegisterLogic.Save(formData)
 			if err != nil {
 				log.Fatal(err)
