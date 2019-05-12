@@ -31,6 +31,9 @@
                 <label for="theme">今後取り上げて欲しいテーマがあれば教えてください。</label>
                 <textarea class="form-control" id="theme" name="theme" rows="3"></textarea>
             </div>
+            {{if .formErrors}}
+                <div class="text-danger ml-3">{{.formErrors.userID}}</div>
+            {{end}}
             <div class="d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary">送信</button>
             </div>
