@@ -70,5 +70,9 @@ func personalInfoFormValidator(formData map[string]string) map[string]error {
 	if pi != nil {
 		e["userID"] = fmt.Errorf("出席登録済みです")
 	}
+
+	if len(e) == 0 {
+		return nil
+	}
 	return e
 }
