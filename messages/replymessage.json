@@ -65,7 +65,7 @@
                 "type": "text",
                 "text": "こちらからご確認ください",
                 "wrap": true,
-                "color": "#666666",
+                "color": "#3399FF",
                 "size": "sm",
                 "flex": 5,
                 "action": {
