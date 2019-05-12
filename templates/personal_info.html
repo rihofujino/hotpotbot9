@@ -38,4 +38,17 @@
 		<p>Copyright@ Tribal Media House.inc</p>
 	</div>
 </body>
+<script>
+liff.init(
+  data => {
+    // Now you can call LIFF API
+		const userId = data.context.userId;
+		console.log('this is userid', userId);
+  },
+  err => {
+		// LIFF initialization failed
+		console.log('error', err);
+  }
+);
+</script>
 </html>
