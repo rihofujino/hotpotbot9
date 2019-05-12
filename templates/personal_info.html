@@ -32,7 +32,7 @@
 							</select>
 					</div>
 					{{if .formErrors}}
-						{{.formErrors.userID}}
+						<div class="text-danger ml-3">{{.formErrors.userID}}</div>
 					{{end}}
 					<div class="d-flex justify-content-center">
 							<button type="submit" class="btn btn-primary">出席</button>
