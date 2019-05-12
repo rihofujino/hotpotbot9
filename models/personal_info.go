@@ -12,7 +12,7 @@ import (
 type (
 	//PersonalInfoLogic ...
 	PersonalInfoLogic interface {
-		GetByUserID(userID string) (*PersonalInfo, error)
+		CountByUserID(userID string) (int64, error)
 		Save(formData map[string]string) error
 	}
 
@@ -35,28 +35,22 @@ func NewPersonalInfoLogic() PersonalInfoLogic {
 	return &personalInfoLogicImpl{}
 }
 
-//GetByUserID ...
-func (p *personalInfoLogicImpl) GetByUserID(userID string) (*PersonalInfo, error) {
+//CountByUserID ...
+func (p *personalInfoLogicImpl) CountByUserID(userID string) (int64, error) {
 	db, err := db.OpenPG()
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer db.Close()
 
-	query := fmt.Sprintf("select id, user_id, name, company, jobtype, created_at from member where user_id='%s'", userID)
-	rows, err := db.Query(query)
+	var count int64
+	query := fmt.Sprintf("select count(*) from member where user_id = '%s';", userID)
+	row := db.QueryRow(query)
+	err = row.Scan(&count)
 	if err != nil {
-		log.Fatal(err)
+		return 0, err
 	}
-
-	var pi PersonalInfo
-	for rows.Next() {
-		err := rows.Scan(&pi.ID, &pi.UserID, &pi.Name, &pi.Company, &pi.JobType, &pi.CreatedAt)
-		if err != nil {
-			log.Fatal(err)
-		}
-	}
-	return &pi, nil
+	return count, nil
 }
 
 //Save ...

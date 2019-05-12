@@ -63,11 +63,11 @@ func personalInfoFormValidator(formData map[string]string) map[string]error {
 	e := make(map[string]error)
 
 	userID := formData["userID"]
-	pi, err := PersonalInfoLogic.GetByUserID(userID)
+	count, err := PersonalInfoLogic.CountByUserID(userID)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if pi != nil {
+	if count != 0 {
 		e["userID"] = fmt.Errorf("出席登録済みです")
 	}
 
