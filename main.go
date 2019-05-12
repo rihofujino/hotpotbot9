@@ -16,7 +16,7 @@ func main() {
 	// class initialize
 	fmt.Println("Initialize classes ...")
 	handlers.PersonalInfoLogic = models.NewPersonalInfoLogic()
-	handlers.SurveyPostLogic = models.NewSurveyPostLogic()
+	handlers.SurveyRegisterLogic = models.NewSurveyRegisterLogic()
 
 	http.HandleFunc("/webhook", handlers.Main)
 	http.HandleFunc("/personal-info", handlers.PersonalInfoEdit)
