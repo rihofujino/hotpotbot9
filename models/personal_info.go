@@ -35,7 +35,7 @@ func (p *personalInfoLogicImpl) Save(formData map[string]string) error {
 	company := formData["company"]
 	jobType := formData["jobType"]
 
-	query := fmt.Sprintf("INSERT INTO member (user_id, name, company, jobType, created_at) VALUES ('%s', %s', '%s', %s, CURRENT_TIMESTAMP);", userID, name, company, jobType)
+	query := fmt.Sprintf("INSERT INTO member (user_id, name, company, jobType, created_at) VALUES ('%s', '%s', '%s', %s, CURRENT_TIMESTAMP);", userID, name, company, jobType)
 	log.Print(query)
 
 	_, err = db.Exec(query)
