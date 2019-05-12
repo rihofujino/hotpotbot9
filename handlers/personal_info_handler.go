@@ -21,8 +21,6 @@ func PersonalInfoEdit(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "POST" {
 		r.ParseForm()
-		fmt.Println("this is formdata")
-		fmt.Println(r.Form)
 		formData := map[string]string{
 			"userID":  r.Form["user_id"][0],
 			"name":    r.Form["name"][0],
