@@ -40,7 +40,6 @@ func Main(w http.ResponseWriter, r *http.Request) {
 
 	for _, event := range events {
 		if event.Type == linebot.EventTypeFollow {
-			log.Print(event.Source)
 			if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewFlexMessage("エンジニア寄せ鍋", container)).Do(); err != nil {
 				log.Fatal(err)
 			}

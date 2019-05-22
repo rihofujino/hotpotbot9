@@ -27,8 +27,6 @@ func PersonalInfoEdit(w http.ResponseWriter, r *http.Request) {
 			"company": r.Form["company"][0],
 			"jobType": r.Form["jobType"][0],
 		}
-		log.Print(formData)
-
 		if e := personalInfoFormValidator(formData); e != nil {
 			data["formErrors"] = e
 		} else {
